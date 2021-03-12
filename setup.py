@@ -4,17 +4,20 @@ from setuptools import setup
 PACKAGE_NAME = 'python-foreman'
 URL = 'https://github.com/david-caro/python-foreman'
 
+def read(fname):
+    with open(os.path.join(os.path.dirname(__file__), fname)) as fn:
+        return fn.read()
+
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+    for package in required:
+
 
 if __name__ == '__main__':
     setup(
         autosemver=True,
-        install_requires=[
-            'autosemver',
-            'requests',
-            'six',
-        ],
-        setup_requires=['autosemver'],
-        name=PACKAGE_NAME,
+        install_requires=required,
+        name='python-foreman',
         include_package_data=True,
         packages=['foreman'],
         description=(
@@ -22,8 +25,8 @@ if __name__ == '__main__':
         ),
         author='David Caro',
         author_email='david@dcaro.es',
-        url=URL,
-        bugtracker_url=URL + '/issues/',
+        url='https://github.com/david-caro/python-foreman',
+        bugtracker_url='https://github.com/david-caro/python-foreman/issues/',
         license='GPLv2',
         classifiers=[
             'Intended Audience :: Developers',
