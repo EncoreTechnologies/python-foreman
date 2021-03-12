@@ -10,7 +10,7 @@ def read(fname):
 
 with open('requirements.txt') as f:
     required = f.read().splitlines()
-    # for package in required:
+
 
 if __name__ == '__main__':
     setup(
