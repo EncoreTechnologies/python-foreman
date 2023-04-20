@@ -8,6 +8,9 @@ URL = 'https://github.com/david-caro/python-foreman'
 if __name__ == '__main__':
     setup(
         autosemver=True,
+        # We are pinning the version of autosemver after its dependency
+        # named typing_extensions became incompatible with versions of
+        # python below 3.7
         install_requires=[
             'autosemver==0.5.5',
             'requests',
