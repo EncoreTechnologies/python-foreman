@@ -9,11 +9,11 @@ if __name__ == '__main__':
     setup(
         autosemver=True,
         install_requires=[
-            'autosemver',
+            'autosemver==0.5.5',
             'requests',
             'six',
         ],
-        setup_requires=['autosemver'],
+        setup_requires=['autosemver==0.5.5'],
         name=PACKAGE_NAME,
         include_package_data=True,
         packages=['foreman'],
