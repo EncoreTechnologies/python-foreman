@@ -12,7 +12,6 @@ if __name__ == '__main__':
             'autosemver',
             'requests',
             'six',
-            'typing_extensions == 4.1.1'
         ],
         setup_requires=['autosemver'],
         name=PACKAGE_NAME,
