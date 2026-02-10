@@ -1,0 +1,2 @@
+# autosemver removed - uses deprecated pkg_resources
+# Version is now hardcoded in setup.py
