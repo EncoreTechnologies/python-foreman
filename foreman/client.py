@@ -279,6 +279,31 @@ class MethodAPIDescription(object):
 
         code = '\n'.join(code)
 
+        # async is a protected variable in python starting in python 3.7
+        # There are 3 API actions that use async param. They are:
+        # /katello/api/repositories/:id/import_uploads
+        # /katello/api/environments/:id
+        # /katello/api/organizations/:organization_id/environments/:id
+        # All of these do not required async and its defaulted in the API.
+        # Since we do not use these values at encore we are dropping them
+        # Long term we need to write a decorator to rename these inline
+        # to not short functionality.
+        if 'async' in code:
+            replace_str = 'async'
+            if ', async' in code:
+                replace_str = ", {0}".format(replace_str)
+
+            if 'async=None' in code:
+                replace_str = "{0}=None".format(replace_str)
+
+            if 'async=False' in code:
+                replace_str = "{0}=False".format(replace_str)
+
+            if 'async=True' in code:
+                replace_str = "{0}=True".format(replace_str)
+
+            code = code.replace(replace_str, '')
+
         six.exec_(code)
 
         function = locals()[self.name]
